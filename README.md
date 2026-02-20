@@ -6,6 +6,51 @@ A commercial-grade Digital Twin platform that uses IoT sensor data to predict pr
 
 ## 🏗️ Architecture
 
+```mermaid
+graph TD
+    %% Define styles
+    classDef client fill:#0078D4,stroke:#005A9E,stroke-width:2px,color:#FFF,rx:8px,ry:8px
+    classDef backend fill:#E3008C,stroke:#A1006B,stroke-width:2px,color:#FFF,rx:8px,ry:8px
+    classDef db fill:#008A00,stroke:#006600,stroke-width:2px,color:#FFF,rx:8px,ry:8px
+    classDef iot fill:#FF8C00,stroke:#E67300,stroke-width:2px,color:#FFF,rx:8px,ry:8px
+    classDef cloud fill:#2B88D8,stroke:#005A9E,stroke-width:2px,color:#FFF,rx:8px,ry:8px,stroke-dasharray: 5 5
+
+    %% Nodes
+    subgraph Clients ["Users Frontends"]
+        Mobile["📱 Tenant App<br>(React Native / Expo)"]:::client
+        Web["💻 Landlord Dashboard<br>(React / Vite)"]:::client
+    end
+
+    subgraph Devices ["Edge IoT Devices"]
+        Sensor["🌡️ IoT Simulator<br>(Python script)"]:::iot
+    end
+
+    subgraph CoreServices ["Core Services"]
+        API["⚙️ Backend API & Risk Engine<br>(Python FastAPI)"]:::backend
+    end
+
+    subgraph DataLayer ["Data Persistence"]
+        SQLite[("🗄️ SQLite<br>(Local DB)")]:::db
+        AzureSQL[("☁️ Azure SQL<br>(Production DB)")]:::cloud
+    end
+
+    subgraph CloudMessaging ["Cloud Event Broker (Future)"]
+        IoTHub("☁️ Azure IoT Hub<br>(Telemetry Routing)"):::cloud
+    end
+
+    %% Connections
+    Mobile -- "REST HTTPS\n(Report Issues)" --> API
+    Web -- "REST HTTPS\n(Fetch Data & Analytics)" --> API
+    Sensor -- "HTTP POST\n(Synthetic Telemetry)" --> API
+    
+    API -- "SQLAlchemy ORM\n(Read/Write)" --> SQLite
+    API -. "SQLAlchemy ORM\n(Future Production)" .-> AzureSQL
+    Sensor -. "MQTT\n(Future Route)" .-> IoTHub
+    IoTHub -. "Event Grid / Trigger" .-> API
+```
+
+### Components
+
 - **Backend:** Python FastAPI (REST API + Risk Engine).
 - **Database:** SQLite (SQLAlchemy) - *Ready for Azure SQL*.
 - **IoT Simulator:** Python script generating synthetic telemetry data.
