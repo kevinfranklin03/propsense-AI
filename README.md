@@ -94,14 +94,14 @@ graph TD
 
 ## 📸 Screenshots
 
-<!-- Save screenshots to docs/screenshots/ and update filenames below -->
 <div align="center">
 
 | Dashboard | Analytics | Property Map |
 |:---------:|:---------:|:------------:|
-| ![Dashboard](<img width="2558" height="1270" alt="admin_home" src="https://github.com/user-attachments/assets/4b9487b3-e0dd-4ea5-8e51-8dde4d25c724" />) | ![Analytics](<img width="2559" height="1269" alt="admin_analytics" src="https://github.com/user-attachments/assets/c358d219-22df-4d5b-bbb6-18e9eae0c079" />) | ![Map](<img width="2559" height="1262" alt="admin_map" src="https://github.com/user-attachments/assets/74e4761b-574c-4ad1-a325-5695a9a2409f" />) |
+| ![Dashboard](https://github.com/user-attachments/assets/4b9487b3-e0dd-4ea5-8e51-8dde4d25c724) | ![Analytics](https://github.com/user-attachments/assets/c358d219-22df-4d5b-bbb6-18e9eae0c079) | ![Map](https://github.com/user-attachments/assets/74e4761b-574c-4ad1-a325-5695a9a2409f) |
 
 </div>
+
 
 ---
 
